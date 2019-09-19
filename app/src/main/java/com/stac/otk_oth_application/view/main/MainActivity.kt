@@ -1,7 +1,8 @@
-package com.stac.otk_oth_application
+package com.stac.otk_oth_application.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.stac.otk_oth_application.R
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
