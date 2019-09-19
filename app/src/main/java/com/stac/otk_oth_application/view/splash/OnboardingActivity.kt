@@ -14,7 +14,7 @@ import com.stac.otk_oth_application.view.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_onboarding.*
 import org.jetbrains.anko.startActivity
 
-class OnboardingActivity : AppCompatActivity(){
+class OnboardingActivity : AppCompatActivity() {
 
 
     private lateinit var sliderAdapter: SliderAdapter
@@ -40,7 +40,11 @@ class OnboardingActivity : AppCompatActivity(){
 
         }
 
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
 
         }
     }
@@ -61,9 +65,9 @@ class OnboardingActivity : AppCompatActivity(){
          *  Add more layouts if you wish.
          **/
         layouts = arrayOf(
-//            R.layout.onboarding_silde1,
-//            R.layout.onboarding_silde2,
-//            R.layout.onboarding_silde3
+            R.layout.onboarding_one,
+            R.layout.onboarding_two,
+            R.layout.onboarding_three
         )
 
         sliderAdapter = SliderAdapter(this, layouts)
