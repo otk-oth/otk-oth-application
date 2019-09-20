@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "121078471129",
+    "firebase_url": "https://otk-oth.firebaseio.com",
+    "project_id": "otk-oth",
+    "storage_bucket": "otk-oth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121078471129:android:3261b9482f5e3d99e4e1c8",
+        "android_client_info": {
+          "package_name": "com.stac.otk_oth_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121078471129-alct8i2d0ct7bftc8dkjhkk68ckdennu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stac.otk_oth_application",
+            "certificate_hash": "ce4b894e933d2bc57395f77e550b0cf7ea36c084"
+          }
+        },
+        {
+          "client_id": "121078471129-sal773da775jfl4biuum64kpsljq6jte.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOYdui1dJJn6xgNep4-t8M2WLgnz8G_B4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "121078471129-sal773da775jfl4biuum64kpsljq6jte.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 package com.stac.otk_oth_application.view.splash
 
+import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +14,24 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+
+        val pref = getSharedPreferences("isFirst", Activity.MODE_PRIVATE)
+
+        val first = pref.getBoolean("isFirst", false)
+
         val handler = Handler()
         handler.postDelayed({
-            startActivity<MainActivity>()
-            finish()
+            if (!first) {
+                val editor = pref.edit()
+                editor.putBoolean("isFirst", true)
+                editor.apply()
+                startActivity<OnboardingActivity>()
+                finish()
+            } else {
+                startActivity<MainActivity>()
+                finish()
+            }
+
         }, 2000)
     }
 }
