@@ -6,11 +6,18 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
     </style>
 
     <style name="ModalBottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
         <!-- Apply attributes here -->
     </style>
 
+
+    <style name="ButtonStyle" parent="android:style/Widget.Button">
+        <item name="android:textSize">18sp</item>
+        <item name="android:text">로그인</item>
+        <item name="android:background">@drawable/bg_button</item>
+    </style>
 
 </resources>
