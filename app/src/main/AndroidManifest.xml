@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.login.RegisterActivity"></activity>
+        <activity android:name=".view.login.InfoActivity"></activity>
+        <activity android:name=".view.login.RegisterActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -24,14 +25,14 @@
         <activity android:name=".view.point.PointActivity" />
         <activity android:name=".view.login.LoginActivity" />
         <activity android:name=".view.splash.OnboardingActivity" />
-        <activity android:name=".view.splash.SplashActivity" />
-        <activity android:name=".view.main.MainActivity">
+        <activity android:name=".view.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.main.MainActivity" />
     </application>
 
 </manifest>
