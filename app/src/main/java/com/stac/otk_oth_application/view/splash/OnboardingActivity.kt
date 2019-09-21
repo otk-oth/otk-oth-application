@@ -85,6 +85,7 @@ class OnboardingActivity : AppCompatActivity() {
         }
     }
 
+
     private fun getCurrentScreen(i: Int): Int = slider.currentItem.plus(i)
 
     private fun interactions() {
