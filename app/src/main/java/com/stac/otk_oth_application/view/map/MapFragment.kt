@@ -1,4 +1,4 @@
-package com.stac.otk_oth_application
+package com.stac.otk_oth_application.view.map
 
 
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.stac.otk_oth_application.R
 
 /**
  * A simple [Fragment] subclass.
