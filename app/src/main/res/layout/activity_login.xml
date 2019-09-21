@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context=".view.login.LoginActivity">
 
 
     <ImageView
+        android:id="@+id/login_title"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:src="@drawable/login_bg"
         app:layout_constraintBottom_toTopOf="@+id/login_area"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_area"
@@ -36,6 +38,7 @@
             android:textColor="@android:color/black"
             android:textSize="12pt"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/loginText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="오똑캐 오톡해 로그인"
+            app:layout_constraintBottom_toTopOf="@+id/login_email_area"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/welcome" />
@@ -61,6 +65,7 @@
             android:paddingTop="15dp"
             android:paddingEnd="5dp"
             android:paddingBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/login_pw_area"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginText">
@@ -75,6 +80,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/login_pw_area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -84,6 +90,7 @@
             android:paddingTop="15dp"
             android:paddingEnd="5dp"
             android:paddingBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@id/login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_email_area">
@@ -102,13 +109,14 @@
             style="@style/ButtonStyle"
             android:layout_width="320dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="220dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/bg_button"
             android:paddingEnd="5dp"
             android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/or"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_pw_area" />
 
         <LinearLayout
             android:id="@+id/google"
@@ -119,6 +127,7 @@
             android:background="@drawable/bg_google"
             android:orientation="horizontal"
             android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/register_area"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/or">
@@ -140,6 +149,7 @@
             android:background="@drawable/bg_facebook"
             android:orientation="horizontal"
             android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/register_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/or">
@@ -166,19 +176,22 @@
             android:id="@+id/register_area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="15dp"
             android:text="아직 회원가입을 하지 않았다고요?"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/google" />
 
         <TextView
             android:id="@+id/register_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="250dp"
-            android:layout_marginBottom="28dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/bg_register_button"
             android:paddingStart="10dp"
             android:paddingTop="2dp"
@@ -187,7 +200,8 @@
             android:text="회원가입"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/facebook" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
