@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:fontFamily="@font/font_family"
+            android:fontFamily="@font/korean"
             android:text="반가워요 !"
             android:textColor="@android:color/black"
             android:textSize="12pt"
@@ -47,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/korean"
             android:text="오똑캐 오톡해 로그인"
             app:layout_constraintBottom_toTopOf="@+id/login_email_area"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,6 +75,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:fontFamily="@font/korean"
                 android:hint="이메일" />
 
         </LinearLayout>
@@ -99,6 +101,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:fontFamily="@font/korean"
                 android:hint="비밀번호" />
 
         </LinearLayout>
@@ -110,6 +113,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_button"
+            android:fontFamily="@font/korean"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toTopOf="@+id/or"
             app:layout_constraintEnd_toEndOf="parent"
@@ -164,6 +168,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:fontFamily="@font/font_family"
             android:text="- OR -"
             android:textSize="7pt"
             app:layout_constraintEnd_toEndOf="parent"
@@ -175,8 +180,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="70dp"
             android:layout_marginBottom="25dp"
+            android:fontFamily="@font/korean"
             android:text="아직 회원가입을 하지 않았다고요?"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -187,10 +193,11 @@
             android:id="@+id/register_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="250dp"
+            android:layout_marginStart="260dp"
             android:layout_marginTop="28dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/bg_register_button"
+            android:fontFamily="@font/korean"
             android:paddingStart="8dp"
             android:paddingTop="1dp"
             android:paddingEnd="8dp"

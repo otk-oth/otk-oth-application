@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.stac.otk_oth_application.R
+import com.stac.otk_oth_application.view.login.LoginActivity
 import com.stac.otk_oth_application.view.main.MainActivity
 import org.jetbrains.anko.startActivity
 
@@ -28,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
                 startActivity<OnboardingActivity>()
                 finish()
             } else {
-                startActivity<MainActivity>()
+                startActivity<LoginActivity>()
                 finish()
             }
 

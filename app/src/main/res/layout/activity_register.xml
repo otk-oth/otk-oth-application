@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:fontFamily="@font/font_family"
+        android:fontFamily="@font/korean"
         android:text="새로운 친구 !"
         android:textColor="@android:color/black"
         android:textSize="12pt"
@@ -25,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/korean"
         android:text="오똑캐 오톡해 회원가입"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +59,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:fontFamily="@font/korean"
                 android:hint="이메일" />
 
         </LinearLayout>
@@ -79,6 +81,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:fontFamily="@font/korean"
                 android:hint="비밀번호" />
 
         </LinearLayout>
@@ -100,6 +103,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:fontFamily="@font/korean"
                 android:hint="비밀번호 재입력" />
 
         </LinearLayout>
@@ -113,6 +117,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/bg_button"
         android:text="회원가입"
+        android:fontFamily="@font/korean"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
