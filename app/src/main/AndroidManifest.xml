@@ -13,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDQzBW3R7tHq3y340VekayOxm4rfRCCQg0" />
+
         <activity android:name=".view.user.SettingActivity"></activity>
         <activity android:name=".view.user.MypageActivity" />
         <activity android:name=".view.point.PointActivity" />
