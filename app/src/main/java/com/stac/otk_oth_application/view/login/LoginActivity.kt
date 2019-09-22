@@ -29,12 +29,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import java.util.*
 
-
-import android.content.pm.PackageManager
-import android.util.Base64
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
-
 class LoginActivity : AppCompatActivity() {
 
     private var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -82,15 +76,15 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth.signInWithEmailAndPassword(userEmail!!, userPw!!)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    toast("로그인 성공")
+                    toast("오똑캐 오톡해 : 환영합니다.")
                     startActivity<InfoActivity>()
                     finish()
                 } else {
-                    toast("로그인 실패")
+                    toast("아이디와 비밀번호를 확인해주세요.")
                 }
             }
             .addOnFailureListener {
-                toast("로그인 실패")
+                toast("아이디와 비밀번호를 확인해주세요.")
             }
     }
 
