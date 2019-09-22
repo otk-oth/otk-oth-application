@@ -8,26 +8,38 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.core.app.ActivityCompat
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.stac.otk_oth_application.R
 import com.stac.otk_oth_application.toast
-import com.stac.otk_oth_application.view.main.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.startActivity
+import java.util.*
+
+
+import android.content.pm.PackageManager
+import android.util.Base64
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 class LoginActivity : AppCompatActivity() {
 
     private var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private lateinit var googleSignInClient: GoogleSignInClient
+    lateinit var callbackManager: CallbackManager
 
     private var userEmail: String? = null
     private var userPw: String? = null
@@ -42,7 +54,10 @@ class LoginActivity : AppCompatActivity() {
             email()
         }
 
+        facebookAuth()
+
         googleAuth()
+
 
     }
 
@@ -95,8 +110,39 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    private fun facebookAuth() {
+        callbackManager = CallbackManager.Factory.create()
+
+        facebook.setOnClickListener {
+            facebookLogin()
+        }
+    }
+
+    private fun facebookLogin() {
+
+        LoginManager.getInstance()
+            .logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
+        LoginManager.getInstance()
+            .registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+
+                override fun onSuccess(result: LoginResult?) {
+                    //페이스북 로그인 성공
+                    handleFacebookAccessToken(result?.accessToken)
+                }
+
+                override fun onCancel() {
+                    Log.d("cancle", " cancle")
+                }
+
+                override fun onError(error: FacebookException?) {
+                    Log.d("error", error.toString())
+                }
+            })
+    }
+
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        callbackManager.onActivityResult(requestCode, resultCode, data)
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
@@ -108,6 +154,28 @@ class LoginActivity : AppCompatActivity() {
             } catch (e: ApiException) {
 
             }
+        }
+
+    }
+
+    private fun handleFacebookAccessToken(token: AccessToken?) {
+        Log.d("MainActivity", "handleFacebookAccessToken:$token")
+        if (token != null) {
+            val credential = FacebookAuthProvider.getCredential(token.token)
+            firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d("MainActivity", "signInWithCredential:success")
+                        val user = firebaseAuth.currentUser
+                        loginSucceed(user)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w("MainActivity", "signInWithCredential:failure", task.exception)
+                        toast("Authentication failed.")
+                        loginSucceed(null)
+                    }
+                }
         }
     }
 

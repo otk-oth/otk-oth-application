@@ -2,4 +2,6 @@
     <string name="app_name">오똑캐 오톡해</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="facebook_app_id">383636752271647</string> <string name="fb_login_protocol_scheme">fb383636752271647</string>
 </resources>

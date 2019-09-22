@@ -5,9 +5,9 @@ buildscript {
     ext.anko_version='0.10.8'
 
     repositories {
+        mavenCentral()
         google()
         jcenter()
-        
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.2'
