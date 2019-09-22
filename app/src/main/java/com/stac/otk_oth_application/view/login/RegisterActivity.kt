@@ -23,7 +23,6 @@ class RegisterActivity : AppCompatActivity() {
     var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     var userEmail: String? = null
     var userPw: String? = null
-    var userPWOverlap: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

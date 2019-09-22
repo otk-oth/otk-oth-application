@@ -29,61 +29,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         val v = inflater.inflate(R.layout.fragment_map, container, false)
         mapView = v.findViewById(R.id.map_view)
         mapView.onCreate(savedInstanceState)
-
+        mapView.onResume()
         // 지도 콜백 등록
         mapView.getMapAsync(this)
         // Inflate the layout for this fragment
         return v
-    }
-
-    override fun onStart() {
-        super.onStart()
-        mapView.onStart()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mapView.onResume()
-    }
-
-    // 프래그먼트 정지시점에 호출, 남겨두어야 할 내용들을 저장
-    override fun onPause() {
-        super.onPause()
-        mapView.onPause()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        mapView.onSaveInstanceState(outState)
-    }
-
-    override fun onLowMemory() {
-        super.onLowMemory()
-        mapView.onLowMemory()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        mapView.onDestroy()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mapView.onLowMemory()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        mapView.onStop()
-    }
-
-    // 액티비티가 처음 생성될 때 실행되는 함수
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        if(mapView != null){
-            mapView.onCreate(savedInstanceState)
-        }
     }
 
     // GoogleMap 객체를 가져와 지도를 맞춤 설정함
