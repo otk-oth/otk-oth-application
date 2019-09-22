@@ -76,7 +76,10 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:fontFamily="@font/korean"
-                android:hint="이메일" />
+                android:hint="이메일"
+                android:inputType="text"
+                android:maxLength="25"
+                android:maxLines="1" />
 
         </LinearLayout>
 
@@ -102,7 +105,10 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:fontFamily="@font/korean"
-                android:hint="비밀번호" />
+                android:hint="비밀번호"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:maxLines="1" />
 
         </LinearLayout>
 
