@@ -31,14 +31,18 @@ class RegisterActivity : AppCompatActivity() {
         toast("비밀번호는 6자리 이상으로 설정해주세요.")
 
         register.setOnClickListener {
-            if (register_pw.text.toString() == register_re_pw.text.toString() && check.isChecked) {
-                Register()
-            } else {
-                if (check.isChecked) {
-                    toast("비밀번호가 일치하지 않습니다.")
+            if (register_email.text.toString().isNotEmpty() && register_pw.text.toString().isNotEmpty() && register_re_pw.text.toString().isNotEmpty()) {
+                if (register_pw.text.toString() == register_re_pw.text.toString() && check.isChecked) {
+                    Register()
                 } else {
-                    toast("약관을 동의해 주세요.")
+                    if (check.isChecked) {
+                        toast("비밀번호가 일치하지 않습니다.")
+                    } else {
+                        toast("약관을 동의해 주세요.")
+                    }
                 }
+            } else {
+                toast("입력 사항을 다 입력해주세요.")
             }
         }
 
