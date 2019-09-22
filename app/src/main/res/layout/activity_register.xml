@@ -156,6 +156,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/korean"
             android:paddingStart="10dp"
+            android:textColor="@android:color/black"
             android:text="오똑캐 오톡해 약관 동의 사항" />
 
     </LinearLayout>
