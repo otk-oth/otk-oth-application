@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var standardBottomSheetBehavior: BottomSheetBehavior<View>
 
-    private val startColor = Color.parseColor("#00FFFFFF")
-    private val endColor = Color.parseColor("#FFFFFFFF")
+    private val startColor = Color.parseColor("#004b9ff0")
+    private val endColor = Color.parseColor("#FF86d0ff")
     private val textColor = Color.parseColor("#FF000000")
 
     private var modalDismissWithAnimation = false
@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
         // 프래그먼트 트랜젝션 마무리
         fragmentTransaction.commit()
+
+        setupStandardBottomSheet()
     }
 
     private fun setupStandardBottomSheet() {
@@ -59,7 +61,5 @@ class MainActivity : AppCompatActivity() {
         standardBottomSheetBehavior.saveFlags = BottomSheetBehavior.SAVE_ALL
         textView.setTextColor(textColor)
     }
-
-
 
 }
