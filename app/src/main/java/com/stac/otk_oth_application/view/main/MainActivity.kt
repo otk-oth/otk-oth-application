@@ -1,28 +1,26 @@
 package com.stac.otk_oth_application.view.main
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.animation.ArgbEvaluatorCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.stac.otk_oth_application.R
 import com.stac.otk_oth_application.view.map.MapFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.bottom_sheet.*
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var standardBottomSheetBehavior: BottomSheetBehavior<View>
-
-    private val startColor = Color.parseColor("#004b9ff0")
-    private val endColor = Color.parseColor("#FF86d0ff")
-    private val textColor = Color.parseColor("#FF000000")
-
-    private var modalDismissWithAnimation = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        setFragment()
+        setBottomSheet()
+    }
+
+    private fun setFragment() {
 
         // 프래그먼트 트랜젝션
         val fragmentTransaction = supportFragmentManager.beginTransaction()
@@ -31,35 +29,69 @@ class MainActivity : AppCompatActivity() {
 
         // 프래그먼트 트랜젝션 마무리
         fragmentTransaction.commit()
-
-        setupStandardBottomSheet()
     }
 
-    private fun setupStandardBottomSheet() {
-        standardBottomSheetBehavior = BottomSheetBehavior.from(standardBottomSheet)
-        val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
+    private fun setBottomSheet() {
 
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                textView.text = when (newState) {
-                    BottomSheetBehavior.STATE_EXPANDED -> "STATE_EXPANDED"
-                    BottomSheetBehavior.STATE_COLLAPSED -> "STATE_COLLAPSED"
-                    BottomSheetBehavior.STATE_DRAGGING -> "STATE_DRAGGING"
-                    BottomSheetBehavior.STATE_HALF_EXPANDED -> "STATE_HALF_EXPANDED"
-                    BottomSheetBehavior.STATE_HIDDEN -> "STATE_HIDDEN"
-                    BottomSheetBehavior.STATE_SETTLING -> "STATE_SETTLING"
-                    else -> null
+        val mLayoutParams: ViewGroup.MarginLayoutParams =
+            mainFab.layoutParams as ViewGroup.MarginLayoutParams
+
+        mLayoutParams.bottomMargin = 425
+
+        mainFab.layoutParams = mLayoutParams
+        // 바텀 시트
+        val bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
+
+        // 바텀 시트 상태
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        // 바텀 시트 높이
+        bottomSheetBehavior.peekHeight = 400
+        // 바텀 시트 내려감 방지
+        bottomSheetBehavior.isHideable = false
+        // 바텀 시트 움직일 때 감지
+        bottomSheetBehavior.bottomSheetCallback =
+            object : BottomSheetBehavior.BottomSheetCallback() {
+
+
+                // 움직임 감지
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                    mainFab.hide()
                 }
-            }
 
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                val fraction = (slideOffset + 1f) / 2f
-                val color = ArgbEvaluatorCompat.getInstance().evaluate(fraction, startColor, endColor)
-                slideView.setBackgroundColor(color)
+                // 상태 감지
+                override fun onStateChanged(bottomSheet: View, newState: Int) {
+                    when (newState) {
+                        BottomSheetBehavior.STATE_COLLAPSED -> {
+                            // 동적으로 UI Margin 바꾸기위한 녀석
+                            val mLayoutParams: ViewGroup.MarginLayoutParams =
+                                mainFab.layoutParams as ViewGroup.MarginLayoutParams
+
+                            mLayoutParams.bottomMargin = 425
+
+                            mainFab.layoutParams = mLayoutParams
+
+                            mainFab.show()
+                        }
+
+                        BottomSheetBehavior.STATE_EXPANDED -> {
+                            // 동적으로 UI Margin 바꾸기위한 녀석
+                            val mLayoutParams: ViewGroup.MarginLayoutParams =
+                                mainFab.layoutParams as ViewGroup.MarginLayoutParams
+
+                            mLayoutParams.bottomMargin = 1425
+
+                            mainFab.layoutParams = mLayoutParams
+
+                            mainFab.show()
+                        }
+                        else -> null
+
+                    }
+
+                }
+
             }
-        }
-        standardBottomSheetBehavior.bottomSheetCallback = bottomSheetCallback
-        standardBottomSheetBehavior.saveFlags = BottomSheetBehavior.SAVE_ALL
-        textView.setTextColor(textColor)
     }
-
 }
