@@ -36,7 +36,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="현재 위치 : " />
+                    android:fontFamily="@font/korean"
+                    android:text="위로 올려줘 ~!" />
 
 
             </LinearLayout>
@@ -51,7 +52,8 @@
             android:layout_marginEnd="5dp"
             android:background="@android:color/white"
             android:gravity="center"
-            android:text="bottom_sheet_content"
+            android:text="내용 추가하자."
+            android:fontFamily="@font/korean"
             android:textColor="@android:color/black" />
 
     </LinearLayout>

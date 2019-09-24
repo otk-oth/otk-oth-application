@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/myPage"
+            android:icon="@drawable/ic_person_outline"
+            android:title="마이 페이지" />
+        <item
+            android:id="@+id/pointShop"
+            android:icon="@drawable/ic_shop"
+            android:title="포인트 샵" />
+        <item
+            android:id="@+id/lost"
+            android:icon="@drawable/ic_lost"
+            android:title="분실물 센터" />
+    </group>
+
+    <item android:title="설정">
+        <menu>
+
+            <item
+                android:id="@+id/setting"
+                android:icon="@drawable/ic_settings"
+                android:title="설정" />
+        </menu>
+    </item>
+
+</menu>

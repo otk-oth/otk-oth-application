@@ -20,4 +20,8 @@
         <item name="android:background">@drawable/bg_button</item>
     </style>
 
+    <style name="font" parent="android:Widget.TextView.PopupMenu">
+        <item name="android:fontFamily">@font/korean</item>
+    </style>
+
 </resources>
