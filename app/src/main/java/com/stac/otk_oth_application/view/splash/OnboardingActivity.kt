@@ -125,7 +125,7 @@ class OnboardingActivity : AppCompatActivity() {
         dots = arrayOfNulls(layouts.size)
 
         dotsLayout.removeAllViews()
-        for (i in 0 until dots!!.size) {
+        for (i in dots!!.indices) {
             dots!![i] = TextView(this)
             dots!![i]?.text = Html.fromHtml("&#8226;")
             dots!![i]?.textSize = 35f

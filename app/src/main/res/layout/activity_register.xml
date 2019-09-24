@@ -136,15 +136,15 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="25dp"
-        android:paddingTop="15dp"
+        android:paddingTop="5dp"
         android:paddingEnd="10dp"
-        android:paddingBottom="15dp"
+        android:paddingBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_area">
 
-        <CheckBox
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/check"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
@@ -156,8 +156,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/korean"
             android:paddingStart="10dp"
-            android:textColor="@android:color/black"
-            android:text="오똑캐 오톡해 약관 동의 사항" />
+            android:text="오똑캐 오톡해 약관 동의 사항"
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 

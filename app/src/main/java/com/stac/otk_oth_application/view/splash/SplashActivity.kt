@@ -29,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
                 startActivity<OnboardingActivity>()
                 finish()
             } else {
-                startActivity<LoginActivity>()
+                startActivity<MainActivity>()
                 finish()
             }
 

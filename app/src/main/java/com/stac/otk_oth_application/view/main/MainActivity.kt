@@ -14,26 +14,101 @@ import android.text.Spannable
 import com.stac.otk_oth_application.utiles.CustomTypefaceSpan
 import android.text.SpannableString
 import android.graphics.Typeface
+import android.net.Uri
+import android.util.Log
 import androidx.core.view.GravityCompat
-
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.stac.otk_oth_application.data.User
+import kotlinx.android.synthetic.main.main_nav_header.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var userName: String
+    private lateinit var userEmail: String
+    private lateinit var userPhoto: Uri
+    private lateinit var userId: String
+    private val db = FirebaseFirestore.getInstance()
+
+    private var loadImage: String? = null
+    private var loadName: String? = null
+    private var loadEmail: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        getUserData()
         setFragment()
         setBottomSheet()
         setFontChange()
         setButtonListener()
+    }
 
+
+    private fun getUserData() {
+
+        // 인증한 User의 Id 를 가져와 ID 의 정보를 각 변수에 저장을 함.
+        val user = FirebaseAuth.getInstance().currentUser
+
+        Log.d("asd", user.toString())
+        user?.let {
+            // Name, email address, and profile photo Url
+            val name = user.displayName
+            val email = user.email
+
+            val photoUrl = user.photoUrl
+
+            // Check if user's email is verified
+            val emailVerified = user.isEmailVerified
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            val uid = user.uid
+            if (name != null) {
+                userName = name
+            }
+            if (email != null) {
+                userEmail = email
+            }
+            if (photoUrl != null) {
+                userPhoto = photoUrl
+            }
+
+            userId = uid
+        }
+    }
+
+    private fun setData() {
+        val doRef = db.collection(userEmail).document("$userName : $userId")
+        doRef.get().addOnCompleteListener {
+            if (it.isSuccessful) {
+                val userDTO = it.result?.toObject(User::class.java)
+
+                if (userDTO != null) {
+                    loadImage = userDTO.userImage
+                    loadName = userDTO.userName
+                    loadEmail = userEmail
+
+                    loadData()
+                }
+            }
+        }
+    }
+
+    private fun loadData() {
+        Glide.with(applicationContext).load(loadImage).into(mainUserImage)
+        userName_draw.text = loadName
+        userEmail_draw.text = loadEmail
     }
 
     private fun setButtonListener() {
 
         // 드로워 네비게이션 을 열어주는 메뉴 버튼을 눌렀을시 드로워 네비게이션을 열어줌.
         main_menu.setOnClickListener {
+            setData()
             drawerLayout.openDrawer(GravityCompat.START)
         }
     }
@@ -179,5 +254,4 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
-
 }

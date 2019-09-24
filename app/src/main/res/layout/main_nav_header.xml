@@ -6,7 +6,7 @@
     android:layout_height="250dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
+        android:id="@+id/mainUserImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="24dp"
@@ -28,7 +28,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/mainUserImage">
 
 
         <TextView

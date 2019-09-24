@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.provider.MediaStore
+import android.util.Log
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -30,10 +31,9 @@ class InfoActivity : AppCompatActivity() {
     private var firebaseStore: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
 
-    lateinit var userName: String
-    lateinit var userEmail: String
-    lateinit var userPhoto: Uri
-    lateinit var userId: String
+    private lateinit var userName: String
+    private lateinit var userEmail: String
+    private lateinit var userId: String
 
     var Gender = ""
     var image = false
@@ -43,11 +43,10 @@ class InfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
+        getUserData()
         firebaseInit()
         buttonListener()
         setting()
-        getUserData()
-
         setGender()
 
     }
@@ -87,36 +86,17 @@ class InfoActivity : AppCompatActivity() {
     private fun getUserData() {
 
         val user = FirebaseAuth.getInstance().currentUser
-        user?.let {
-            // Name, email address, and profile photo Url
-            val name = user.displayName
-            val email = user.email
-            val photoUrl = user.photoUrl
+        userName = user?.displayName.toString()
+        userEmail = user?.email.toString()
+        userId = user?.uid.toString()
 
-            // Check if user's email is verified
-            val emailVerified = user.isEmailVerified
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getToken() instead.
-            val uid = user.uid
-            if (name != null) {
-                userName = name
-            }
-            if (email != null) {
-                userEmail = email
-            }
-            if (photoUrl != null) {
-                userPhoto = photoUrl
-            }
-            userId = uid
-        }
+        Log.d("asd", "$userName, $userEmail, $userId")
     }
 
     private fun uploadProfile(uri: String) {
 
         if (Gender.isNotEmpty()) {
-            db.collection("userInfo").document("$userName : $userId")
+            db.collection(userEmail).document("$userName : $userId")
                 .set(User(uri, info_name.text.toString(), Gender))
                 .addOnCompleteListener {
 
@@ -166,7 +146,7 @@ class InfoActivity : AppCompatActivity() {
 
     private fun uploadImage() {
         if (filePath != null) {
-            val ref = storageReference?.child("User_Image/$userName/$userId")
+            val ref = storageReference?.child("user_Image/$userName/$userEmail/$userId")
             val uploadTask = ref?.putFile(filePath!!)
 
             val urlTask =
