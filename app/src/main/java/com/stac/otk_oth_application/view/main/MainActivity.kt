@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.stac.otk_oth_application.data.User
+import com.stac.otk_oth_application.view.lost.LostActivity
 import com.stac.otk_oth_application.view.point.PointActivity
 import com.stac.otk_oth_application.view.user.MypageActivity
 import com.stac.otk_oth_application.view.user.SettingActivity
@@ -131,7 +132,7 @@ class MainActivity : AppCompatActivity() {
             }
             // 분실물
             R.id.lost -> {
-
+                startActivity<LostActivity>()
             }
 
             // 세팅
