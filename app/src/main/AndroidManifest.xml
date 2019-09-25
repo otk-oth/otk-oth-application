@@ -4,6 +4,7 @@
     package="com.stac.otk_oth_application">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.login.InfoActivity"></activity>
+        <activity android:name=".view.login.InfoActivity" />
         <activity android:name=".view.login.RegisterActivity" />
 
         <meta-data
