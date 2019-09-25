@@ -66,8 +66,8 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:fontFamily="@font/font_family"
-            android:text="YeoDam"
+            android:fontFamily="@font/korean"
+            android:text="오똑캐 오톡해"
             android:textColor="@android:color/black"
             android:textSize="8pt" />
 

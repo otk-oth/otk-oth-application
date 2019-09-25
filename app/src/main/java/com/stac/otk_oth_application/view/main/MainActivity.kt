@@ -21,7 +21,11 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.stac.otk_oth_application.data.User
+import com.stac.otk_oth_application.view.point.PointActivity
+import com.stac.otk_oth_application.view.user.MypageActivity
+import com.stac.otk_oth_application.view.user.SettingActivity
 import kotlinx.android.synthetic.main.main_nav_header.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -119,11 +123,11 @@ class MainActivity : AppCompatActivity() {
         when (item!!.itemId) {
             // 마이페이지
             R.id.myPage -> {
-
+                startActivity<MypageActivity>()
             }
             // 포인트샵
             R.id.pointShop -> {
-
+                startActivity<PointActivity>()
             }
             // 분실물
             R.id.lost -> {
@@ -132,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 
             // 세팅
             R.id.setting -> {
-
+                startActivity<SettingActivity>()
             }
         }
 

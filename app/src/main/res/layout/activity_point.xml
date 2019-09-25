@@ -6,4 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".view.point.PointActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/point_Appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/point_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            app:navigationIcon="@drawable/ic_arrow_back_black_24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/korean"
+                android:text="포인트 샵"
+                android:textColor="@android:color/black"
+                android:textSize="7pt" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    
+
 </androidx.constraintlayout.widget.ConstraintLayout>
