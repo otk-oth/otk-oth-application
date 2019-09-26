@@ -1,5 +1,6 @@
 package com.stac.otk_oth_application.view.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -21,7 +22,6 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.stac.otk_oth_application.data.User
-import com.stac.otk_oth_application.view.lost.LostActivity
 import com.stac.otk_oth_application.view.point.PointActivity
 import com.stac.otk_oth_application.view.user.MypageActivity
 import com.stac.otk_oth_application.view.user.SettingActivity
@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         setBottomSheet()
         setFontChange()
         setButtonListener()
+        navigationSelectedListener()
     }
 
 
@@ -118,30 +119,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    private fun navigationSelectedListener() {
+        main_navigation.setNavigationItemSelectedListener {
+            when (it!!.itemId) {
+                // 마이페이지
+                R.id.myPage -> {
+                    startActivity<MypageActivity>()
+                    return@setNavigationItemSelectedListener true
+                }
+                // 포인트샵
+                R.id.pointShop -> {
+                    startActivity<PointActivity>()
+                    return@setNavigationItemSelectedListener true
+                }
+                // 분실물
+                R.id.lost -> {
+                    val uri = Uri.parse("https://www.lost112.go.kr")
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                    return@setNavigationItemSelectedListener true
+                }
 
-        // 드로워 네비게이션 아이템 선택했을때 이벤트 발생 코드
-        when (item!!.itemId) {
-            // 마이페이지
-            R.id.myPage -> {
-                startActivity<MypageActivity>()
-            }
-            // 포인트샵
-            R.id.pointShop -> {
-                startActivity<PointActivity>()
-            }
-            // 분실물
-            R.id.lost -> {
-                startActivity<LostActivity>()
-            }
+                // 세팅
+                R.id.setting -> {
+                    startActivity<SettingActivity>()
+                    return@setNavigationItemSelectedListener true
+                }
 
-            // 세팅
-            R.id.setting -> {
-                startActivity<SettingActivity>()
+                else -> return@setNavigationItemSelectedListener true
             }
         }
-
-        return super.onOptionsItemSelected(item)
     }
 
     private fun setFontChange() {
